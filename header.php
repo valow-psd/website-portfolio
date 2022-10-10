@@ -29,7 +29,7 @@
                         <img src="assets/img/logo-vm.png" alt="Global">
 <!--                        <p>Valentin Munch</p>-->
                     </a>
-                    <button class="header--cta cta">Hire Us</button>
+                    <button class="header--cta cta">Me Contacter</button>
                     <div class="header--nav-toggle">
                         <span></span>
                     </div>

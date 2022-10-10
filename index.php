@@ -2,6 +2,7 @@
 
 include "header.php";
 include "inner-menu.php";
+include "basededonnees.php";
 ?>
 
 
@@ -21,7 +22,7 @@ include "inner-menu.php";
                                     </svg>
                                     <span class="btn-background"></span>
                                 </button>
-                                <img src="assets/img/introduction-visual.png" alt="Welcome">
+                                <img src="https://futhead.cursecdn.com/static/img/21/players_alt/p117631383.png" alt="Welcome">
                             </div>
                             <p>
                                 Mon parcours
@@ -52,92 +53,133 @@ include "inner-menu.php";
 <!--                                <img src="assets/img/about-visual.png" alt="About Us">-->
                             </div>
                             <p>Langages</p>
+                            <?php
+                            $MESSAGE_SQL_COMP_Lang = "SELECT * FROM competences WHERE categorie LIKE 'langage';";
+                            $requeteCompetencesLang = $basededonnees->prepare($MESSAGE_SQL_COMP_Lang);
+                            $requeteCompetencesLang->execute();
+                            $listeCompLang = $requeteCompetencesLang->fetchAll();
+
+                            ?>
 
                             <div class="about--options">
 
-                                <a href="#0">
-                                    <h3>HTML</h3>
+                                <?php
+
+                                    foreach($listeCompLang as $catlangage){
+
+
+                                        $imgCatLang = $catlangage["image"];
+                                        $nomCatLang = $catlangage["nom"];
+
+                                        //print_r($imgCatLang);
+                                ?>
+                                <a href="#" style="background-image: url('<?=$imgCatLang?>');">
+                                    <h3><?=$nomCatLang?></h3>
                                 </a>
-                                <a href="#0">
-                                    <h3>CSS</h3>
-                                </a>
-                                <a href="#0">
-                                    <h3>JS</h3>
-                                </a>
-                                <a href="#0">
-                                    <h3>Java</h3>
-                                </a>
-                                <a href="#0">
-                                    <h3>C#</h3>
-                                </a>
-                                <a href="#0">
-                                    <h3>Python</h3>
-                                </a>
+
+                                <?php
+                                    }
+                                ?>
                             </div>
                             <br><br>
                             <p>CMS</p>
+                            <?php
+                            $MESSAGE_SQL_COMP_CMS = "SELECT * FROM competences WHERE categorie LIKE 'CMS';";
+                            $requeteCompetencesCMS = $basededonnees->prepare($MESSAGE_SQL_COMP_CMS);
+                            $requeteCompetencesCMS->execute();
+                            $listeCompCMS = $requeteCompetencesCMS->fetchAll();
+                            ?>
                             <div class="about--options">
 
-                                <a href="#0">
-                                    <h3>Wordpress</h3>
-                                </a>
-                                <a href="#0">
-                                    <h3>Shopify</h3>
-                                </a>
-                                <a href="#0">
-                                    <h3>Wix</h3>
-                                </a>
+                                <?php
+                                foreach($listeCompCMS as $catCMS){
+                                    //print_r($catCMS);
+                                    $imgCatCMS = $catCMS["image"];
+                                    $nomCatCMS = $catCMS["nom"];
+                                    ?>
+                                    <a href="#" style="background-image: url("<?=$imgCatCMS?>");">
+                                        <h3><?=$nomCatCMS?></h3>
+                                    </a>
+
+                                    <?php
+                                }
+                                ?>
                             </div>
                             <br><br>
                             <p>Côté serveur</p>
+                            <?php
+
+
+                            $MESSAGE_SQL_COMP_Serv = "SELECT * FROM competences WHERE categorie LIKE 'serveur';";
+                            $requeteCompetencesServ = $basededonnees->prepare($MESSAGE_SQL_COMP_Serv);
+                            $requeteCompetencesServ->execute();
+                            $listeCompServ = $requeteCompetencesServ->fetchAll();
+
+                            ?>
                             <div class="about--options">
-                                <a href="#0">
-                                    <h3>SQL</h3>
-                                </a>
-                                <a href="#0">
-                                    <h3>PHP</h3>
-                                </a>
-                                <a href="#0">
-                                    <h3>NodeJS</h3>
-                                </a>
+                                <?php
+                                foreach($listeCompServ as $catServeur){
+                                    $imgCatServ = $catServeur["image"];
+                                    $nomCatServ = $catServeur["nom"];
+                                    ?>
+                                    <a href="#" style="background-image: url("<?=$imgCatServ?>");">
+                                        <h3><?=$nomCatServ?></h3>
+                                    </a>
+
+                                    <?php
+                                    }
+                                    ?>
                             </div>
                         </div>
                     </li>
 
 
                     <!--                    Début partie projets persos-->
+<?php
+$MESSAGE_SQL_LIST_PROJ_PERS = "SELECT titre, image, description FROM projets_persos;";
+
+$requeteListeProjPer = $basededonnees->prepare($MESSAGE_SQL_LIST_PROJ_PERS);
+$requeteListeProjPer->execute();
+$listeProjPer = $requeteListeProjPer->fetchAll();
+
+?>
+
                     <li class="l-section section">
                         <div class="work">
                             <h2>Projets personnels</h2>
                             <div class="work--lockup">
                                 <ul class="slider">
-                                    <li class="slider--item slider--item-left">
+                                    <?php
+                                    $counterz=0;
+                                    while($counterz<3){
+                                    foreach($listeProjPer as $projpersos){
+                                        $imgProjPersos = $projpersos['image'];
+                                        $titreProjPerso = $projpersos['titre'];
+                                        $descProjPerso = $projpersos['description'];
+
+                                        if($counterz == 0){
+                                            $posw = "left";
+                                        } if($counterz == 1){
+                                            $posw = "center";
+                                        }
+                                        if($counterz == 2){
+                                            $posw = "right";
+                                        }
+                                    ?>
+                                    <li class="slider--item slider--item-<?=$posw?>">
                                         <a href="#0">
                                             <div class="slider--item-image">
-                                                <img src="assets/img/work-victory.jpg" alt="Victory">
+                                                <img src="<?=$imgProjPersos?>" alt="Victory">
                                             </div>
-                                            <p class="slider--item-title">Projet 1</p>
-                                            <p class="slider--item-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.</p>
+                                            <p class="slider--item-title"><?=$titreProjPerso?></p>
+                                            <p class="slider--item-description"><?=$descProjPerso?></p>
                                         </a>
                                     </li>
-                                    <li class="slider--item slider--item-center">
-                                        <a href="#0">
-                                            <div class="slider--item-image">
-                                                <img src="assets/img/work-metiew-smith.jpg" alt="Metiew and Smith">
-                                            </div>
-                                            <p class="slider--item-title">Projet 2</p>
-                                            <p class="slider--item-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.</p>
-                                        </a>
-                                    </li>
-                                    <li class="slider--item slider--item-right">
-                                        <a href="#0">
-                                            <div class="slider--item-image">
-                                                <img src="assets/img/work-alex-nowak.jpg" alt="Alex Nowak">
-                                            </div>
-                                            <p class="slider--item-title">Projet 3</p>
-                                            <p class="slider--item-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.</p>
-                                        </a>
-                                    </li>
+                                    <?php
+                                        $counterz++;
+                                        }
+                                    }
+                                    ?>
                                 </ul>
                                 <div class="slider--prev">
                                     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -160,38 +202,53 @@ include "inner-menu.php";
                         </div>
                     </li>
                     <!--                    Début partie présentation projets scolaires-->
+                    <?php
+                    $MESSAGE_SQL_LIST_PROJ_SCO = "SELECT titre, img, descriptio FROM projets_sco;";
+
+                    $requeteListeProjSco = $basededonnees->prepare($MESSAGE_SQL_LIST_PROJ_SCO);
+                    $requeteListeProjSco->execute();
+                    $listeProjSco = $requeteListeProjSco->fetchAll();
+
+                    ?>
                     <li class="l-section section">
                         <div class="work">
                             <h2>Projets Scolaires</h2>
                             <div class="work--lockup">
                                 <ul class="slider">
-                                    <li class="slider--item slider--item-left">
+                                    <?php
+                                    $counter=0;
+                                        while($counter<3){
+                                            foreach($listeProjSco as $projetsScolaires){
+
+                                                $titreProjSco = $projetsScolaires["titre"];
+                                                $descProjSco = $projetsScolaires["descriptio"];
+                                                $imgProjSco = $projetsScolaires["img"];
+
+                                                if($counter == 0){
+                                                    $pos = "left";
+                                                } if($counter == 1){
+                                                    $pos = "center";
+                                                }
+                                                if($counter == 2){
+                                                    $pos = "right";
+                                                }
+
+                                                print_r($counter);
+                                    ?>
+                                    <li class="slider--item slider--item-<?=$pos?>">
                                         <a href="#0">
                                             <div class="slider--item-image">
-                                                <img src="assets/img/work-victory.jpg" alt="Victory">
+                                                <img src="<?=$imgProjSco ?>" alt="Victory">
                                             </div>
-                                            <p class="slider--item-title">Projet 1</p>
-                                            <p class="slider--item-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.</p>
+                                            <p class="slider--item-title"><?=$titreProjSco ?></p>
+                                            <p class="slider--item-description"><?=$descProjSco ?></p>
                                         </a>
                                     </li>
-                                    <li class="slider--item slider--item-center">
-                                        <a href="#0">
-                                            <div class="slider--item-image">
-                                                <img src="assets/img/work-metiew-smith.jpg" alt="Metiew and Smith">
-                                            </div>
-                                            <p class="slider--item-title">Projet 2</p>
-                                            <p class="slider--item-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.</p>
-                                        </a>
-                                    </li>
-                                    <li class="slider--item slider--item-right">
-                                        <a href="#0">
-                                            <div class="slider--item-image">
-                                                <img src="assets/img/work-alex-nowak.jpg" alt="Alex Nowak">
-                                            </div>
-                                            <p class="slider--item-title">Projet 3</p>
-                                            <p class="slider--item-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.</p>
-                                        </a>
-                                    </li>
+                                    <?php
+                                                $counter++;
+                                            }
+                                        }
+                                    ?>
                                 </ul>
                                 <div class="slider--prev">
                                     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -217,17 +274,17 @@ include "inner-menu.php";
                     <li class="l-section section">
                         <div class="contact">
                             <div class="contact--lockup">
-                                <div class="modal">
+                                <div class="modal" style="width: 800px;">
                                     <div class="modal--information">
-                                        <p>Address</p>
-                                        <a href="mailto:ouremail@gmail.com">ouremail@gmail.com</a>
-                                        <a href="tel:+000">+33.</a>
+                                        <p>Mes informations</p>
+                                        <a href="mailto:email@gmail.com">email@gmail.com</a>
+                                        <a href="tel:++33123456545">+33 1 23 45 65 45</a>
                                     </div>
                                     <ul class="modal--options">
                                         <li><a href="#0">Bēhance</a></li>
                                         <li><a href="#0">dribbble</a></li>
                                         <li><a href="#0">Github</a></li>
-                                        <li><a href="mailto:ouremail@gmail.com">Contact Us</a></li>
+                                        <li><a href="twitter.com/espion_modz">Me contacter</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -236,8 +293,8 @@ include "inner-menu.php";
                     <!--                    Début partie contact-->
                     <li class="l-section section">
                         <div class="hire">
-                            <h2>You want us to do</h2>
-                            <!-- checkout formspree.io for easy form setup -->
+                            <h2>Quel est votre projet ?</h2>
+                            <!--  formspree.io pour tout setup -->
                             <form class="work-request">
                                 <div class="work-request--options">
                   <span class="options-a">
@@ -249,7 +306,7 @@ include "inner-menu.php";
                         <path d="M950,705L555,310L360,505C253,612,160,700,155,700c-6,0-44-34-85-75l-75-75l278-278L550-5l475,475c261,261,475,480,475,485c0,13-132,145-145,145C1349,1100,1167,922,950,705z"/>
                       </g>
                       </svg>
-                      App Design
+                      Design d'App
                     </label>
                     <input id="opt-2" type="checkbox" value="graphic design">
                     <label for="opt-2">
@@ -259,7 +316,7 @@ include "inner-menu.php";
                         <path d="M950,705L555,310L360,505C253,612,160,700,155,700c-6,0-44-34-85-75l-75-75l278-278L550-5l475,475c261,261,475,480,475,485c0,13-132,145-145,145C1349,1100,1167,922,950,705z"/>
                       </g>
                       </svg>
-                      Graphic Design
+                      Design Graphique
                     </label>
                     <input id="opt-3" type="checkbox" value="motion design">
                     <label for="opt-3">
@@ -291,7 +348,7 @@ include "inner-menu.php";
                         <path d="M950,705L555,310L360,505C253,612,160,700,155,700c-6,0-44-34-85-75l-75-75l278-278L550-5l475,475c261,261,475,480,475,485c0,13-132,145-145,145C1349,1100,1167,922,950,705z"/>
                       </g>
                       </svg>
-                      Webdesign
+                      Design Web
                     </label>
                     <input id="opt-6" type="checkbox" value="marketing">
                     <label for="opt-6">
@@ -301,21 +358,21 @@ include "inner-menu.php";
                         <path d="M950,705L555,310L360,505C253,612,160,700,155,700c-6,0-44-34-85-75l-75-75l278-278L550-5l475,475c261,261,475,480,475,485c0,13-132,145-145,145C1349,1100,1167,922,950,705z"/>
                       </g>
                       </svg>
-                      Marketing
+                      SEO & Marketing
                     </label>
                   </span>
                                 </div>
                                 <div class="work-request--information">
                                     <div class="information-name">
                                         <input id="name" type="text" spellcheck="false">
-                                        <label for="name">Name</label>
+                                        <label for="name">Nom</label>
                                     </div>
                                     <div class="information-email">
                                         <input id="email" type="email" spellcheck="false">
                                         <label for="email">Email</label>
                                     </div>
                                 </div>
-                                <input type="submit" value="Send Request">
+                                <input type="submit" value="Envoyer">
                             </form>
                         </div>
                     </li>
