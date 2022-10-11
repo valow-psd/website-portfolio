@@ -12,6 +12,7 @@ include "navbar.php";
                 <div class="card mb-4">
 <!--                    <h5 class="card-header">Form Controls</h5>-->
                     <div class="card-body">
+                        <form action="traitement-ajout-proj-pers.php" method="post">
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Titre</label>
                             <input
@@ -19,7 +20,6 @@ include "navbar.php";
                                 class="form-control"
                                 id="titre_proj_sco"
                                 name="titre_proj_sco"
-                                placeholder=""
                             />
                         </div>
 
@@ -51,7 +51,9 @@ include "navbar.php";
                         </div>
                         <br>
                         <button type="submit" class="btn btn-primary">Envoyer</button>
+                        </form>
                     </div>
+
                 </div>
             </div>
         </div>

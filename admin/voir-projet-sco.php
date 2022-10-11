@@ -16,7 +16,7 @@ $voirProjetsSco = $requeteVoirProjSco->fetchAll();
         <!-- Content -->
 
         <div class="container-xxl flex-grow-1 container-p-y">
-            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Voir /</span> Projets personnels</h4>
+            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Voir /</span> Projets scolaires</h4>
     <div class="card">
         <h5 class="card-header"></h5>
         <a class="card-header" href="ajout-projet-sco.php" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Ajouter nouveau projet</a>

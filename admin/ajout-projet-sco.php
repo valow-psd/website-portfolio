@@ -12,7 +12,9 @@ include "navbar.php";
                   <div class="card mb-4">
 <!--                    <h5 class="card-header">Form Controls</h5>-->
                     <div class="card-body">
-                      <div class="mb-3">
+                        <form action="traitement-ajout-proj-sco.php" method="post">
+
+                        <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">Titre</label>
                         <input
                           type="text"
@@ -61,6 +63,7 @@ include "navbar.php";
                         </div>
                         <br>
                         <button type="submit" class="btn btn-primary">Envoyer</button>
+                        </form>
                     </div>
                   </div>
                 </div>
