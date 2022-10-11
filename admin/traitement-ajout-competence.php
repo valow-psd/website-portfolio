@@ -7,17 +7,15 @@ include "../basededonnees.php";
 
 
 
-$ajoutTitreProjSco =  $_POST["titre_proj_sco"];
-$ajoutCoursProjSco = $_POST["cours_proj_sco"];
-$ajoutDescProjSco =  $_POST["desc_proj_sco"];
-$ajoutDescLProjSco =  $_POST["descL_proj_sco"];
-$ajoutDateProjSco =  $_POST["date_proj_sco"];
-$ajoutLienProjSco =  $_POST["lien_proj_sco"];
-$ajoutImageProjSco =  $_POST["image_proj_sco"];
+$ajoutNomCompet =  $_POST["nom_competence"];
+$ajoutTypeCompet = $_POST["type_competence"];
+$ajoutNiveauCompet =  $_POST["niveau_competence"];
+$ajoutLienCompet =  $_POST["lien_compet"];
+$ajoutImageCompet =  $_POST["image_compt"];
 
-$MESSAGE_SQL_AJOUT_ProjSco = "INSERT INTO projets_sco (titre, descriptio, date_real, quel_cours, img, lien, description_longue)VALUES ('$ajoutTitreProjSco','$ajoutDescProjSco' ,'$ajoutDateProjSco','$ajoutCoursProjSco','$ajoutImageProjSco', '$ajoutLienProjSco','$ajoutDescLProjSco');";
-$requeteAjtProjSco = $basededonnees->prepare($MESSAGE_SQL_AJOUT_ProjSco);
-$requeteAjtProjSco->execute();
-$ajoutProjetsSco = $requeteAjtProjSco->fetchAll();
+$MESSAGE_SQL_AJOUT_COMPETENCES = "INSERT INTO competences (nom, categorie, image, lien, niveau_maitrise)VALUES ('$ajoutNomCompet','$ajoutTypeCompet' ,'$ajoutImageCompet','$ajoutLienCompet','$ajoutNiveauCompet');";
+$requeteAjtCompetences = $basededonnees->prepare($MESSAGE_SQL_AJOUT_COMPETENCES);
+$requeteAjtCompetences->execute();
+$ajoutCompetences = $requeteAjtCompetences->fetchAll();
 
 ?>

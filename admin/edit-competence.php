@@ -2,17 +2,28 @@
 
 include "header.php";
 include "navbar.php";
+include "../basededonnees.php";
+
+$idEditComp = $_GET["id"];
+
+$MESSAGE_SQL_SSSS_COMPETENCES = "SELECT * FROM competences WHERE id LIKE $idEditComp";
+$requeteSSSSSCompetences = $basededonnees->prepare($MESSAGE_SQL_SSSS_COMPETENCES);
+$requeteSSSSSCompetences->execute();
+$SSSSCompetences = $requeteSSSSSCompetences->fetchAll();
 
 ?>
-    <!-- Content wrapper -->
-    <div class="content-wrapper">
-        <div class="container-xxl flex-grow-1 container-p-y">
-            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Ajout /</span> Projets personnels</h4>
-            <div class="col-md-6">
-                <div class="card mb-4">
-                    <!--                    <h5 class="card-header">Form Controls</h5>-->
-                    <div class="card-body">
-                        <form action="traitement-ajout-competence.php" method="post">
+
+
+<?=$SSSSCompetences[""]?>
+<!-- Content wrapper -->
+<div class="content-wrapper">
+    <div class="container-xxl flex-grow-1 container-p-y">
+        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Ajout /</span> Projets personnels</h4>
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <!--                    <h5 class="card-header">Form Controls</h5>-->
+                <div class="card-body">
+                    <form action="traitement-ajout-competence.php" method="post">
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Nom</label>
                             <input
@@ -21,6 +32,7 @@ include "navbar.php";
                                 id="nom_competence"
                                 name="nom_competence"
                                 placeholder=""
+                                value="<?=$SSSSCompetences["nom"]?>"
                             />
                         </div>
                         <div class="mb-3">
@@ -31,6 +43,7 @@ include "navbar.php";
                                 id="type_competence"
                                 name="type_competence"
                                 placeholder="CMS, serveur, langage"
+                                value="<?=$SSSSCompetences["categorie"]?>"
                             />
                         </div>
                         <div class="mb-3">
@@ -42,6 +55,7 @@ include "navbar.php";
                                 name="niveau_competence"
                                 placeholder=""
                                 min="0" max="100"
+                                value="<?=$SSSSCompetences["niveau_maitrise"]?>"
                             />
                         </div>
                         <div>
@@ -55,14 +69,11 @@ include "navbar.php";
                         </div>
                         <br>
                         <button type="submit" class="btn btn-primary">Envoyer</button>
-                        </form>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-<?php
-include "footer.php";
 
-?>
