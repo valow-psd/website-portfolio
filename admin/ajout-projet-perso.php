@@ -18,36 +18,36 @@ include "navbar.php";
                             <input
                                 type="text"
                                 class="form-control"
-                                id="titre_proj_sco"
-                                name="titre_proj_sco"
+                                id="titre_proj_persos"
+                                name="titre_proj_persos"
                             />
                         </div>
 
                         <div>
                             <label for="exampleFormControlTextarea1" class="form-label">Description raccourcie</label>
-                            <textarea class="form-control" id="desc_proj_sco" name="desc_proj_sco" rows="2"></textarea>
+                            <textarea class="form-control" id="desc_proj_persos" name="desc_proj_persos" rows="2"></textarea>
                         </div>
                         <br>
                         <div>
                             <label for="exampleFormControlTextarea1" class="form-label">Description longue</label>
-                            <textarea class="form-control" id="descL_proj_sco" name="descL_proj_sco" rows="4"></textarea>
+                            <textarea class="form-control" id="descL_proj_persos" name="descL_proj_persos" rows="4"></textarea>
                         </div>
                         <br>
 
                         <div class="mb-3 row">
                             <label for="html5-date-input" class="col-md-2 col-form-label">Date réal. projet</label>
                             <div class="col-md-10">
-                                <input class="form-control" type="date" value="" id="date_proj_sco" name="date_proj_sco"/>
+                                <input class="form-control" type="date" value="" id="date_proj_persos" name="date_proj_persos"/>
                             </div>
                         </div>
                         <div>
                             <label for="exampleFormControlTextarea1" class="form-label">Lien vers projet</label>
-                            <textarea class="form-control" id="lien_proj_sco" name="lien_proj_sco" rows="1"></textarea>
+                            <textarea class="form-control" id="lien_proj_persos" name="lien_proj_persos" rows="1"></textarea>
                         </div>
                         <br>
                         <div class="mb-3">
                             <label for="formFile" class="form-label">Image</label>
-                            <input class="form-control" type="file" id="image_proj_sco" name="image_proj_sco" accept="image/png, image/jpeg, image/jpg, image/webp, image/svg"/>
+                            <input class="form-control" type="file" id="image_proj_persos" name="image_proj_persos" accept="image/png, image/jpeg, image/jpg, image/webp, image/svg"/>
                         </div>
                         <br>
                         <button type="submit" class="btn btn-primary">Envoyer</button>
