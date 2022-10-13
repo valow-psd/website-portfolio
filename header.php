@@ -9,6 +9,7 @@
     <meta name="keywords" content="global, template, html, sass, jquery">
     <meta name="author" content="Valentin Munch">
     <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
 </head>
 <body>
 

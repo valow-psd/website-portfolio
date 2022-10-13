@@ -147,8 +147,12 @@ $listeProjPer = $requeteListeProjPer->fetchAll();
                     <li class="l-section section">
                         <div class="work">
                             <h2>Projets personnels</h2>
-                            <div class="work--lockup">
-                                <ul class="slider">
+                            <div class="slider">
+                                <button id="prev" class="btn">
+                                    <i class="las la-angle-left"></i>
+                                </button>
+
+                                <div class="card-content">
                                     <?php
                                     $counterz=0;
                                     while($counterz<3){
@@ -166,38 +170,25 @@ $listeProjPer = $requeteListeProjPer->fetchAll();
                                             $posw = "right";
                                         }
                                     ?>
-                                    <li class="slider--item slider--item-<?=$posw?>">
-                                        <a href="#0">
-                                            <div class="slider--item-image">
-                                                <img src="<?=$imgProjPersos?>" alt="Victory">
+                                        <!-- Card -->
+                                        <div class="card" onclick="window.location='http://google.com';">
+                                            <div class="card-img">
+                                                <img src="<?=$imgProjPersos?>" alt="">
                                             </div>
-                                            <p class="slider--item-title"><?=$titreProjPerso?></p>
-                                            <p class="slider--item-description"><?=$descProjPerso?></p>
-                                        </a>
-                                    </li>
+                                            <div class="card-text">
+                                                <h2><?=$titreProjPerso?></h2>
+                                                <p><?=$descProjPerso?><p>
+                                            </div>
+                                        </div>
                                     <?php
                                         $counterz++;
                                         }
                                     }
                                     ?>
-                                </ul>
-                                <div class="slider--prev">
-                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                         viewBox="0 0 150 118" style="enable-background:new 0 0 150 118;" xml:space="preserve">
-                  <g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
-                      <path d="M561,1169C525,1155,10,640,3,612c-3-13,1-36,8-52c8-15,134-145,281-289C527,41,562,10,590,10c22,0,41,9,61,29
-                    c55,55,49,64-163,278L296,510h575c564,0,576,0,597,20c46,43,37,109-18,137c-19,10-159,13-590,13l-565,1l182,180
-                    c101,99,187,188,193,199c16,30,12,57-12,84C631,1174,595,1183,561,1169z"/>
-                  </g>
-                  </svg>
                                 </div>
-                                <div class="slider--next">
-                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 150 118" style="enable-background:new 0 0 150 118;" xml:space="preserve">
-                  <g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
-                      <path d="M870,1167c-34-17-55-57-46-90c3-15,81-100,194-211l187-185l-565-1c-431,0-571-3-590-13c-55-28-64-94-18-137c21-20,33-20,597-20h575l-192-193C800,103,794,94,849,39c20-20,39-29,61-29c28,0,63,30,298,262c147,144,272,271,279,282c30,51,23,60-219,304C947,1180,926,1196,870,1167z"/>
-                  </g>
-                  </svg>
-                                </div>
+                                <button id="next" class="btn">
+                                    <i class="las la-angle-right"></i>
+                                </button>
                             </div>
                         </div>
                     </li>
@@ -210,63 +201,56 @@ $listeProjPer = $requeteListeProjPer->fetchAll();
                     $listeProjSco = $requeteListeProjSco->fetchAll();
 
                     ?>
+
                     <li class="l-section section">
                         <div class="work">
                             <h2>Projets Scolaires</h2>
-                            <div class="work--lockup">
-                                <ul class="slider">
+                            <div class="slider">
+                                <button id="prev" class="btn">
+                                    <i class="las la-angle-left"></i>
+                                </button>
+
+                                <div class="card-content">
                                     <?php
                                     $counter=0;
                                         while($counter<3){
                                             foreach($listeProjSco as $projetsScolaires){
 
-                                                $titreProjSco = $projetsScolaires["titre"];
-                                                $descProjSco = $projetsScolaires["descriptio"];
-                                                $imgProjSco = $projetsScolaires["img"];
+                                    $titreProjSco = $projetsScolaires["titre"];
+                                    $descProjSco = $projetsScolaires["descriptio"];
+                                    $imgProjSco = $projetsScolaires["img"];
 
-                                                if($counter == 0){
-                                                    $pos = "left";
-                                                } if($counter == 1){
-                                                    $pos = "center";
-                                                }
-                                                if($counter == 2){
-                                                    $pos = "right";
-                                                }
+                                    if($counter == 0){
+                                        $pos = "left";
+                                    } if($counter == 1){
+                                        $pos = "center";
+                                    }
+                                    if($counter == 2){
+                                        $pos = "right";
+                                    }
 
-                                                print_r($counter);
+                                    //print_r($counter);
                                     ?>
-                                    <li class="slider--item slider--item-<?=$pos?>">
-                                        <a href="#0">
-                                            <div class="slider--item-image">
-                                                <img src="<?=$imgProjSco ?>" alt="Victory">
-                                            </div>
-                                            <p class="slider--item-title"><?=$titreProjSco ?></p>
-                                            <p class="slider--item-description"><?=$descProjSco ?></p>
-                                        </a>
-                                    </li>
+                                    <!-- Card -->
+                                    <div class="card" onclick="window.location='http://google.com';">
+                                        <div class="card-img">
+                                            <img src="<?=$imgProjSco?>" alt="">
+                                        </div>
+                                        <div class="card-text">
+                                            <h2><?=$titreProjSco?></h2>
+                                            <p><?=$descProjSco?><p>
+                                        </div>
+                                    </div>
                                     <?php
                                                 $counter++;
                                             }
                                         }
-                                    ?>
-                                </ul>
-                                <div class="slider--prev">
-                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                         viewBox="0 0 150 118" style="enable-background:new 0 0 150 118;" xml:space="preserve">
-                  <g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
-                      <path d="M561,1169C525,1155,10,640,3,612c-3-13,1-36,8-52c8-15,134-145,281-289C527,41,562,10,590,10c22,0,41,9,61,29
-                    c55,55,49,64-163,278L296,510h575c564,0,576,0,597,20c46,43,37,109-18,137c-19,10-159,13-590,13l-565,1l182,180
-                    c101,99,187,188,193,199c16,30,12,57-12,84C631,1174,595,1183,561,1169z"/>
-                  </g>
-                  </svg>
+                                        ?>
+                                    <!-- Card End -->
                                 </div>
-                                <div class="slider--next">
-                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 150 118" style="enable-background:new 0 0 150 118;" xml:space="preserve">
-                  <g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
-                      <path d="M870,1167c-34-17-55-57-46-90c3-15,81-100,194-211l187-185l-565-1c-431,0-571-3-590-13c-55-28-64-94-18-137c21-20,33-20,597-20h575l-192-193C800,103,794,94,849,39c20-20,39-29,61-29c28,0,63,30,298,262c147,144,272,271,279,282c30,51,23,60-219,304C947,1180,926,1196,870,1167z"/>
-                  </g>
-                  </svg>
-                                </div>
+                                <button id="next" class="btn">
+                                    <i class="las la-angle-right"></i>
+                                </button>
                             </div>
                         </div>
                     </li>
@@ -377,14 +361,17 @@ $listeProjPer = $requeteListeProjPer->fetchAll();
                         </div>
                     </li>
                 </ul>
-            </div>
-        </div>
-    </div>
+</div>
+</div>
+</div>
 <?php require "outer-nav.php"; ?>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-2.2.4.min.js"><\/script>')</script>
 <script src="assets/js/functions-min.js"></script>
+<script src="assets/js/script.js"></script>
 </body>
 </html>
+
+}
